@@ -1,0 +1,70 @@
+<div ng-include="'view/parts/nav.html'"></div>
+
+<div class="container" ng-controller="UnosController"> 
+
+	<div ng-include="'view/parts/alert.html'"></div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<form ng-submit="post()">
+
+				<label for="naslov">Naslov:</label> 
+				<input type="text" id="naslov" class="form-control" name="naslov" ng-model="film.naslov"/>
+				<br>
+
+				<label for="zanr">Žanr:</label> 
+				<select id="zanr" ng-model="film.zanr" class="form-control" name="zanr">
+					<option value=""></option>
+					<option ng-repeat="zanr in zanrovi">{{zanr.naziv}}</option>
+				</select>
+				<br> 
+
+				<label for="godina">Godina:</label> 
+				<select ng-model="film.godina" id="godina" class="form-control" name="godina">
+					<option value=""></option>
+					<option ng-repeat="godina in godine" value="{{godina}}">{{godina}}</option>
+				</select>
+				<br>
+
+				<label for="trajanje">Trajanje:</label>  
+				<input type="text" ng-model="film.trajanje" id="trajanje" class="form-control" name="trajanje"/>
+				<br>
+
+				<label for="slika">Slika:</label>
+				<input type="file" id="img" ng-model="film.slika" />
+				<br>
+
+				<input type="submit" class="btn btn-primary" value="Unos" />
+
+			</form>
+		</div>
+
+		<div class="col-md-8">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Slika</th>
+						<th>Naslov</th>
+						<th>Godina</th>
+						<th>Trajanje</th>
+						<th>Akcija</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr ng-repeat="film in filmovi">
+						<td><img ng-src="images/{{film.slika}}" width="60" height="80"/></td>
+						<td>{{film.naslov}}</td>
+						<td>{{film.godina}}</td>
+						<td>{{film.trajanje}} min</td>
+						<td><a ng-click="delete(film._id, $index)">[Obriši]</a></td>
+					</tr>
+					
+
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</div>

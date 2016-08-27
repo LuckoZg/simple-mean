@@ -1,0 +1,21 @@
+<div ng-include="'view/parts/nav.html'"></div>
+
+<div class="container" ng-controller="PregledController">
+
+	<center class="row" style="margin-bottom: 30px;">
+		<a ng-href="/">Svi</a>
+
+		<span ng-repeat="slovo in abeceda">
+		&sdot; <a ng-href="/{{slovo}}">{{slovo | uppercase}}</a>
+		</span>
+	</center>
+
+	<div class="row">
+		<center class="col-md-4" style="padding: 10px; margin-bottom: 25px;" ng-repeat="film in filmovi">
+			<img ng-src="images/{{film.slika}}" class="img-rounded" alt="" width="140" height="200"><br><br>
+			<i>{{film.naslov}} ({{film.godina}})</i><br>
+			<i>{{film.trajanje}} min</i>
+		</center>
+	</div>
+
+</div>
